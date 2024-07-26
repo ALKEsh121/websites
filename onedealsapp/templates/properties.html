@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}{% block title %}Properties{% endblock %}
+{% block content %}
+
+  <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <span class="breadcrumb"><a href="#">Home</a> / Properties</span>
+          <h3>Properties</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section properties">
+    <div class="container">
+      <div class="row properties-box">
+        {% for i in projects%}
+
+        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
+          <div class="item">
+            <a href="{% url 'project-details' i.id %}"><img src="{{i.image.url}}" alt=""></a>
+            <span class="category">{{i.caption}}</span>
+            <h6>₹{{i.price}}</h6>
+            <h4><a href="3">{{i.location}}</a></h4>
+            <ul>
+              <li>Property ID: <span>{{i.custom_id}}</span></li>
+
+              <li>Bedrooms: <span>{{i.bathrooms}}</span></li>
+              <li>Bathrooms: <span>{{i.bathrooms}}</span></li>
+              <li>Area: <span>{{i.area}}</span></li>
+              <li>Floor: <span>{{i.floor}}</span></li>
+              <li>Parking: <span>{{i.parking}}</span></li>
+              <li>Parking: <span>{{i.id}}</span></li>
+
+            </ul>
+            <div class="main-button">
+              <a href="{% url 'project-details' i.id %}">Enquire Now</a>
+            </div>
+          </div>
+          
+        </div>
+        {% endfor %}
+      </div>
+      
+    </div>
+  </div>
+
+ {%endblock%}

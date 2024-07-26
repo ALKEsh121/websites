@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}{% block title %}Home{% endblock %}
+{% block content %}
+<div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <span class="breadcrumb"><a href="#">Home</a> / Services</span>
+          <h3>Services</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+{% if services %}
+  <div class="section properties">
+    <div class="container">
+      <div class="row properties-box">
+        {% for i in services%}
+        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
+          <div class="item">
+            <a href="{% url 'service-details' i.id %}"><img src="{{i.image.url}}" alt=""></a>
+            <p>{{service.details}}</p>
+            <div class="main-button">
+              <a href="{% url 'service-details' i.id %}">Read More</a>
+            </div>
+          </div>
+        </div> 
+       {%endfor%}
+      </div>
+    </div>
+  </div>
+{%endif%}
+{%endblock%}

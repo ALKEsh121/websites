@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}{% block title %}Verify{% endblock %}
+{% block content %}
+{%if messages%}
+{%for message in messages%}
+<div style="text-align:center;" class="alert alert-success" role="alert">{{message}}</div>
+{%endfor%}
+{%endif%}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let timer = 60; // 60 seconds countdown
+        const countdownElement = document.getElementById('countdown');
+        const resendButton = document.getElementById('resendButton');
+
+        const interval = setInterval(() => {
+            timer--;
+            countdownElement.textContent = timer;
+            if (timer <= 0) {
+                clearInterval(interval);
+                resendButton.disabled = false;
+            }
+        }, 1000);
+
+        resendButton.addEventListener('click', () => {
+            resendButton.disabled = true;
+            timer = 60;
+            countdownElement.textContent = timer;
+            setInterval(() => {
+                timer--;
+                countdownElement.textContent = timer;
+                if (timer <= 0) {
+                    clearInterval(interval);
+                    resendButton.disabled = false;
+                }
+            }, 1000);
+        });
+    });
+</script>
+
+<h2>Verify OTP</h2>
+<br>
+<style>
+    form,h2,p,button{
+        margin-left: 100px;
+        margin-top: 50px;
+    }
+</style>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+<p>Resend OTP in <span id="countdown">60</span> seconds.</p>
+<button type="submit" name="resend_otp" id="resendButton" disabled>Resend OTP</button>
+
+
+<br>
+<br>
+
+    <div class="d-flex justify-content-left mx-5 mb-3 mb-lg-1">
+        <input type="submit" value="Verify" class="btn btn-primary btn-lg"></input>&nbsp;&nbsp;
+    </div>
+
+</form>
+
+
+
+
+
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+{%endblock%}

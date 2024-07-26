@@ -1,0 +1,475 @@
+{% extends 'base.html' %}
+{% load static %}{% block title %}Home{% endblock %}
+{% block content %}
+{%if messages%}
+{%for message in messages%}
+<div style="text-align:center;" class="alert alert-success" role="alert">{{message}}</div>
+{%endfor%}
+{%endif%}
+
+
+
+  <style>
+    .item.item-1 {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .content-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: orangered; /* Ensure text color contrasts well with video */
+    }
+    
+    .schedule-button {
+      margin-top: 20px; /* Adjust spacing between text and button */
+    }
+    
+    .schedule-button button {
+      padding: 10px 20px;
+      font-size: 18px;
+      
+    }
+/* Testimonial Section Styles */
+.testimonials {
+  padding: 80px 0;
+  background-color: #f9f9f9;
+}
+
+.testimonial-slider {
+  overflow: hidden;
+}
+
+.testimonial-container {
+  display: flex;
+  width: 300%; /* Adjust according to the number of testimonials */
+  animation: slide 15s infinite; /* Adjust animation duration as needed */
+}
+
+.testimonial {
+  flex: 1;
+  min-width: 33.33%; /* Ensure each testimonial takes one-third of the container */
+  padding: 20px;
+  text-align: center;
+}
+
+.testimonial img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.testimonial-content {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Keyframe animation for sliding */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  33.33% {
+    transform: translateX(0);
+  }
+  66.66% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+    
+  </style>
+  <div class="main-banner">
+    <div class="owl-carousel owl-banner">
+      <!-- Slide 1 -->
+      <div class="item item-1">
+        <video autoplay loop muted class="video-background">
+          <source src="{% static 'assets/images/one.mp4' %}" type="video/mp4">
+          
+        </video>
+        <div class="content-overlay">
+          
+          <div class="schedule-button">
+            <a href="{% url 'selection' %}"><button class="btn btn-primary">Schedule Visit</button></a>
+          </div>
+        </div>
+      </div>
+      <!-- End Slide 1 -->
+      
+      <!-- Other Slides Here -->
+      
+    </div>
+  </div>
+  
+
+  <div class="featured section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="left-image">
+            <img src="{% static 'assets/images/featured.jpg' %}" alt="">
+            <a href="property-details.html"><img src="{% static 'assets/images/featured-icon.png' %}" alt="" style="max-width: 60px; padding: 0px;"></a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="section-heading">
+            <h6>| Featured</h6>
+            <h2>Best Appartment &amp; Sea view</h2>
+          </div>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Feature
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <p style="text-align: justify;">One Deals Property Marketing is a premier provider of tailored real estate marketing solutions, catering to a diverse clientele including property owners, developers, and investors. With a keen understanding of market dynamics, One Deals crafts personalized marketing strategies aimed at effectively showcasing properties and driving successful transactions.</p></div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  About Us
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <p style="text-align: justify;"> One Deals places a strong emphasis on client satisfaction, providing transparent reporting and analytics to empower clients with valuable insights into campaign performance and audience engagement. With a dedication to innovation and excellence, One Deals Property Marketing continues to set industry standards and deliver exceptional results for clients seeking to maximize the value and visibility of their properties in today’s competitive real estate market.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Why is oneDealsRealty is the best ?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <p style="text-align: justify;">One of the key strengths of One Deals lies in their ability to leverage visual storytelling to captivate audiences. Through professional photography, high-quality videography, and immersive virtual tours, they create compelling narratives that highlight the unique features and lifestyle benefits of each property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="info-table">
+            <ul>
+              <li>
+                <img src="{% static 'assets/images/info-icon-01.png' %}" alt="" style="max-width: 52px;">
+                <h4>250 m2<br><span>Total Flat Space</span></h4>
+              </li>
+              <li>
+                <img src="{% static 'assets/images/info-icon-02.png' %}" alt="" style="max-width: 52px;">
+                <h4>Contract<br><span>Contract Ready</span></h4>
+              </li>
+              <li>
+                <img src="{% static 'assets/images/info-icon-03.png' %}" alt="" style="max-width: 52px;">
+                <h4>Payment<br><span>Payment Process</span></h4>
+              </li>
+              <li>
+                <img src="{% static 'assets/images/info-icon-04.png' %}" alt="" style="max-width: 52px;">
+                <h4>Safety<br><span>24/7 Under Control</span></h4>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-heading text-center">
+            <h6>| Video View</h6>
+            <h2>Get Closer View & Different Feeling</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div class="video-frame">
+            <img src="{% static 'assets/images/video-frame.jpg' %}" alt="">
+            <a href="https://youtube.com" target="_blank"><i class="fa fa-play"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %} <div class="fun-facts">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="wrapper">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="34" data-speed="1000"></h2>
+                   <p class="count-text ">Buildings<br>Finished Now</p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="12" data-speed="1000"></h2>
+                  <p class="count-text ">Years<br>Experience</p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="24" data-speed="1000"></h2>
+                  <p class="count-text ">Awwards<br>Won 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> {% endcomment %}
+{% if projects%}
+  <div class="section best-deal">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="section-heading">
+            <h6>| Best Deal</h6>
+            <h2>Find Your Best Deal Right Now!</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="tabs-content">
+            <div class="row">
+                         
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active">
+                  {% for project in projects|slice:":1" %}
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <div class="info-table">
+                        <ul>
+                          <li>Total Flat Space <span>{{project.area}}</span></li>
+                          <li>Floor number <span>{{project.floor}}</span></li>
+                          <li>Number of Bedrooms <span>{{project.bedrooms}}</span></li>
+                          <li>Number of Bathrooms <span>{{project.bathrooms}}</span></li>
+                          <li>Parking <span>{{project.parking}}</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="{{project.image.url}}" alt="">
+                    </div>
+                    <div class="col-lg-3">
+                      <h4>Extra Info About Property</h4>
+                      <p>{{project.description}}</p>
+                      <div class="icon-button">
+                        <a href="{% url 'project-details' project.id %}"><i class="fa fa-info"></i> Read More</a>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="properties section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-heading text-center">
+            <h6>| Properties</h6>
+            <h2>We Provide The Best Property You Like</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        {% for i in projects|slice:":12" %}
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="{% url 'project-details' i.id %}"><img src="{{i.image.url}}" alt=""></a>
+            <span class="category">{{i.caption}}</span>
+            <h6>₹{{i.price}}</h6>
+            <h4><a href="3">{{i.location}}</a></h4>
+            <ul>
+              <li>Property ID: <span>{{i.custom_id}}</span></li>
+              <li>Bedrooms: <span>{{i.bathrooms}}</span></li>
+              <li>Bathrooms: <span>{{i.bathrooms}}</span></li>
+              <li>Area: <span>{{i.area}}</span></li>
+              <li>Floor: <span>{{i.floor}}</span></li>
+              <li>Parking: <span>{{i.parking}}</span></li>
+            </ul>
+            <div class="main-button">
+              <a href="contact">Enquire</a>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+
+
+  <div class="contact section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-heading text-center">
+            <h6>| Contact Us</h6>
+            <h2>Get In Touch With Our Agents</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="contact-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <div id="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15784.164668525866!2d76.94608474214573!3d8.495378388545975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbec5042af07%3A0xd93189ff76f4e980!2sOne%20Deals%20Realty!5e0!3m2!1sen!2sin!4v1720069333863!5m2!1sen!2sin" width="100%" height="500" style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="item phone">
+                <img src="{% static 'assets/images/phone-icon.png' %}" alt="" style="max-width: 52px;">
+                <h6><a href="tel:+919048451100"> +91 9048451100</a><br><span>Phone Number</span></h6>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="item email">
+                <img src="{% static 'assets/images/email-icon.png' %}" alt="" style="max-width: 52px;">
+                <h6><a href="mailto:support@onedealsrealty.in">onedealsrealty.in</a><br><span>Business Email</span></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <form id="contact-form" action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="name">Full Name</label>
+                  <input type="name" name="name" id="name" placeholder="Your Name..." autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="email">Email Address</label>
+                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..." required="">
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="pro_id">Property ID</label>
+                  <input type="text" name="pro_id" id="pro_id" placeholder="Property ID" required="">
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="subject">Phone</label>
+                  <input type="number" name="phone" id="phone" placeholder="phone..." autocomplete="on" >
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="message">Message</label>
+                  <textarea name="message" id="message" placeholder="Your Message"></textarea>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="orange-button">Send Message</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  {% if testimonials %}
+  <div class="section testimonials">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="section-heading text-center">
+          <h6>| Testimonials</h6>
+          <h2>What Our Clients Say</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <div class="testimonial-slider">
+          <div class="testimonial-container">
+            {% for test in testimonials %}
+            <div class="testimonial">
+              <img src="{{test.image.url}}" alt="Client 1">
+              <div class="testimonial-content">
+                <h3>{{test.name}}</h3>
+                <p>"{{test.caption}}"</p>
+              </div>
+            </div>
+            {%endfor%}
+            <!-- Add more testimonials as needed -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endif%}
+
+
+  {% endblock %}
+
+
+
+  

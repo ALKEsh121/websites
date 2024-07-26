@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}   
+
+<style>
+    /* Modern form styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+select {
+    height: 40px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.alert {
+    margin-top: 20px;
+}
+
+</style> 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <h5>Please Fill out This...!!</h5>
+    <h5>Our Agents will contact you as soon as possible....!</h5>
+
+
+    <div class="row mt-4">
+        <div class="col-lg-6 offset-lg-3">
+            <form id="contact-form" method="post" action="{% url 'selection' %}">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
+                <div class="form-group">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                    {{ form.name.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.phone.label_tag }}
+                    {{ form.phone }}
+                    {{ form.phone.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.address_line_1.label_tag }}
+                    {{ form.address_line_1 }}
+                    {{ form.address_line_1.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.address_line_2.label_tag }}
+                    {{ form.address_line_2 }}
+                    {{ form.address_line_2.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.city.label_tag }}
+                    {{ form.city }}
+                    {{ form.city.errors }}
+                </div>
+                <div class="form-group">
+                    {{ form.country.label_tag }}
+                    {{ form.country }}
+                    {{ form.country.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.state.label_tag }}
+                    {{ form.state }}
+                    {{ form.state.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.postal_code.label_tag }}
+                    {{ form.postal_code }}
+                    {{ form.postal_code.errors }}
+                </div>
+
+               
+
+                <div class="form-group">
+                    {{ form.transaction_type.label_tag }}
+                    {{ form.transaction_type }}
+                    {{ form.transaction_type.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.property_preference.label_tag }}
+                    {{ form.property_preference }}
+                    {{ form.property_preference.errors }}
+                </div>
+
+                <div class="form-group" id="num_bathrooms_field">
+                    {{ form.num_bathrooms.label_tag }}
+                    {{ form.num_bathrooms }}
+                    {{ form.num_bathrooms.errors }}
+                </div>
+
+                <div class="form-group" id="num_bedrooms_field">
+                    {{ form.num_bedrooms.label_tag }}
+                    {{ form.num_bedrooms }}
+                    {{ form.num_bedrooms.errors }}
+                </div>
+
+                <div class="form-group" id="preferred_amenities_field">
+                    <label for="{{ form.preferred_amenities.id_for_label }}">
+                        {{ form.preferred_amenities.label }}
+                    </label>
+                    {{ form.preferred_amenities }}
+                    {{ form.preferred_amenities.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.budget.label_tag }}
+                    {{ form.budget }}
+                    {{ form.budget.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.preferred_contact_method.label_tag }}
+                    {{ form.preferred_contact_method }}
+                    {{ form.preferred_contact_method.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.how_did_you_hear_about_us.label_tag }}
+                    {{ form.how_did_you_hear_about_us }}
+                    {{ form.how_did_you_hear_about_us.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.additional_comments.label_tag }}
+                    {{ form.additional_comments }}
+                    {{ form.additional_comments.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.privacy_policy }}
+                    {{ form.privacy_policy.label }}
+                    {{ form.privacy_policy.errors }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        const propertyPreference = document.getElementById('id_property_preference');
+        const numBathroomsField = document.getElementById('num_bathrooms_field');
+        const numBedroomsField = document.getElementById('num_bedrooms_field');
+        const amenitiesField = document.getElementById('preferred_amenities_field');
+
+        function toggleFields() {
+            if (propertyPreference.value === 'land') {
+                numBathroomsField.style.display = 'none';
+                numBedroomsField.style.display = 'none';
+                amenitiesField.style.display = 'none';
+            } else {
+                numBathroomsField.style.display = 'block';
+                numBedroomsField.style.display = 'block';
+                amenitiesField.style.display = 'block';
+            }
+        }
+
+        propertyPreference.addEventListener('change', toggleFields);
+        toggleFields();  // Call on page load to set initial state
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}{% block title %}Service-Details{% endblock %}
+{% block content %}
+
+  <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <span class="breadcrumb"><a href="#">Home</a>  /  Service Details</span>
+          <h3>Service</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="single-property section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="main-image">
+            <img src="{{service.image.url}}" alt="">
+          </div>
+          <div class="main-content">
+            <!-- <span class="category">Apparment</span> -->
+            <h4>{{service.caption}}</h4>
+            <p>{{service.description}}</p>
+          </div> 
+          <div class="accordion" id="accordionExample">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="info-table">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {%endblock%}
