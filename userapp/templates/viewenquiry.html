@@ -1,0 +1,15 @@
+{%extends 'core.html'%}
+{%block content%}
+<div class="container">
+<a href="{%url 'manage-enquirie'%}" class="btn btn-success" style="width:100px;">Go Back</a>
+<div>
+    <h4>Name :</h4><p>{{enquiry.name}}</p>
+    <h4>Email :</h4><p>{{enquiry.email}}</p>
+    <h4>Phone :</h4><p>{{enquiry.phone}}</p>
+    <h4>Subject :</h4><p>{{enquiry.subject}}</p>
+    <h4>Message :</h4><p>{{enquiry.message}}</p>
+
+</div>
+</div>
+
+{%endblock%}

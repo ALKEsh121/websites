@@ -1,0 +1,69 @@
+{%extends 'core.html'%}
+{%block content %}
+
+{%if messages%}
+{%for message in messages%}
+<div class="alert alert-info" role="alert">{{message}}</div>
+{%endfor%}
+{%endif%}
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Property /</span> Manage Property</h4>
+<a href="{% url 'add-projects' %}" class="btn btn-outline-info">Add a Property</a>
+<br>
+<br>
+<a href="{%url 'userhome'%}" class="btn btn-info">Go Back</a>
+
+{%if projects%} 
+<!-- Basic Bootstrap Table -->
+<div class="card">
+<h5 class="card-header"><strong>Property Details</strong></h5>
+<div class="table-responsive text-nowrap">  
+<table class="table" style="height: 140px;">
+<thead>
+  <tr>
+    <th><strong>Name</strong></th>
+    <th><strong>Caption</strong></th>
+
+    <th><strong>Location</strong></th>
+    <th><strong>Price</strong></th>
+    <th><strong>Status</strong></th> 
+    <!-- <th><strong>Actions</strong></th> -->
+  </tr>
+</thead>
+{%for project in projects%}
+<tbody class="table-border-bottom-0">
+  <tr>
+    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{project.name}}</strong></td>
+    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{project.caption}}</strong></td>
+
+    <td>{{project.location}}</td>
+    <td>{{project.price}}</td>
+
+    <!-- <td>{{blogs.posted_date}}</td> -->
+    <td>
+      {%if project.status == "pending"%}
+      <span class="badge bg-label-danger me-1">Pending</span>
+      {%else%}
+      <span class="badge bg-label-success me-1">Approved</span>
+      {%endif%}
+    </td>
+    
+  </tr>
+  {%endfor%}
+</tbody>
+</table>
+</div>
+</div>
+<!--/ Basic Bootstrap Table -->
+{%else%}
+    <div class="py-5">
+        <div class="row justify-content-center mb-3">
+          <center><strong>Sorry! No Property found at the moment</strong></center>
+          <a style="margin-left: 100px;" href="{% url 'add-projects' %}" class="btn btn-outline-info">Add a Property</a>
+        </div>
+    </div>
+{%endif%}
+{%endblock%}

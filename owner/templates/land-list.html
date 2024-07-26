@@ -1,0 +1,16 @@
+{%extends 'dashboard.html'%}
+{%block body %}
+{%if messages%}
+{%for message in messages%}
+<div class="alert alert-success" role="alert">{{message}}</div>
+{%endfor%}
+{%endif%}
+    <h1>Approved Land Details</h1>
+    <ul>
+        {% for land in land_details %}
+            <li>{{ land.land_description }} - {{ land.location }} (Size: {{ land.size }} sq. meters)</li>
+        {% empty %}
+            <li>No land details available.</li>
+        {% endfor %}
+    </ul>
+{%endblock%}

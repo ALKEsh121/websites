@@ -1,0 +1,75 @@
+{%extends 'dashboard.html'%}
+{%block body %}
+{%if messages%}
+{%for message in messages%}
+<div class="alert alert-success" role="alert">{{message}}</div>
+{%endfor%}
+{%endif%}
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Enquiries /</span> Manage Enquiries</h4>
+<br>
+<br>
+<a href="{%url 'dashboard' %}" class="btn btn-success">Go Back</a>
+<a style="float: right;" href="{% url 'download_data' %}" class="btn btn-primary">Download Data</a>
+
+{%if enquiries%} 
+<div class="card">
+<h5 class="card-header"><strong>Enquiry Details</strong></h5>
+<div class="table-responsive text-nowrap">  
+<table class="table" style="height: 140px;">
+<thead>
+  <tr>
+    <th><strong>Name</strong></th>
+    <th><strong>Email</strong></th>
+     <th><strong>phone </strong></th>
+    <th><strong>Status</strong></th>
+    <th><strong>Actions</strong></th>
+  </tr>
+</thead>
+{%for enquiry in enquiries%}
+<tbody class="table-border-bottom-0">
+  <tr>
+    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{enquiry.name}}</strong></td>
+    <td>{{enquiry.email}}</td>
+    <td>{{enquiry.phone}}</td>
+    <td>
+      {%if enquiry.status == "unread"%}
+      <span class="badge bg-label-danger me-1">unread</span>
+      {%else%}
+      <span class="badge bg-label-success me-1">viewed</span>
+      {%endif%}
+    </td>
+    <td>
+      <div class="dropdown">
+        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+          <i class="bx bx-dots-vertical-rounded"></i>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{%url 'view-enquiry' enquiry.id%}"
+          ><i class="bx bx-info-circle me-1"></i> View</a>
+        <!-- <a class="dropdown-item" href=""
+        ><i class="bx bx-edit-alt me-1"></i> Edit</a>-->
+        <a class="dropdown-item" href="{%url 'delete-enquiry' enquiry.id%}"
+          ><i class="bx bx-trash me-1"></i> Delete</a> 
+         
+      </div>
+      </div>
+    </td>
+  </tr>
+  {%endfor%}
+</tbody>
+</table>
+</div>
+</div>
+<!--/ Basic Bootstrap Table -->
+{%else%}
+    <div class="py-5">
+        <div class="row justify-content-center mb-3">
+          <center><strong>Sorry! No Enquiries found at the moment</strong></center>
+        </div>
+    </div>
+{%endif%}
+{%endblock%}

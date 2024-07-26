@@ -1,0 +1,52 @@
+{%extends 'dashboard.html'%}
+{%block body%}
+<div class="container">
+<a href="{%url 'manage-Visit'%}" class="btn btn-success" style="width:100px;">Go Back</a>
+<br><br>
+<style>
+    
+    table{
+        border: solid rgb(37, 11, 11);
+        border-radius: 1px;
+        text-align: center;
+       
+    }
+    th,td{
+        border: solid rgb(41, 6, 6);
+        border-radius: 1px;
+        text-align: center;
+    }
+
+</style>
+<div>
+    <table>
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Country</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Postal Code</th>
+        <th>Property</th>
+        <th>Budget</th>
+        <th>Transaction</th>
+    </tr>
+    <tr>
+        <td>{{visits.name}}</td>
+        <td>{{visits.email}}</td>
+        <td>{{visits.phone}}</td>
+        <td>{{visits.country}}</td>
+        <td>{{visits.state}}</td>
+        <td>{{visits.city}}</td>
+        <td>{{visits.postal_code}}</td>
+        <td>{{visits.property_preference}}</td>
+        <td>{{visits.budget}}</td>
+        <td>{{visits.transaction_type}}</td>
+        
+    </tr>
+    </table>
+</div>
+</div>
+
+{%endblock%}

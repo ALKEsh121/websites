@@ -1,0 +1,17 @@
+{%extends 'dashboard.html'%}
+{%block body %}
+{%if messages%}
+{%for message in messages%}
+<div class="alert alert-success" role="alert">{{message}}</div>
+{%endfor%}
+{%endif%}
+
+<h1>Review Land Detail</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Status</button>
+</form>
+<p><a href="{% url 'admin_land_list' %}">Back to list</a></p>
+
+{%endblock%}

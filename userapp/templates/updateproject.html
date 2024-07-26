@@ -1,0 +1,25 @@
+{%extends 'core.html'%}
+{%block content %}
+<div class="card mb-4">
+    <h5 class="card-header">Project Update</h5>
+                 <form action="" method="POST">
+                    {%csrf_token%}
+                    <table>
+                      {{form.as_table}}
+                  </table>
+                  <br>
+                    <button type="submit" href="" class="btn btn-outline-success">Update</button>
+    <a href="{%url 'manage-projects'%}" class="btn btn-success" style="width:100px;">Go Back</a>
+
+                 </form>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+       
+     <!--/ Horizontal -->
+    
+    </div>
+
+          {%endblock%}
